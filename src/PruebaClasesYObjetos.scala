@@ -18,7 +18,7 @@ class Paciente(val nombre:String, val primerAp:String,val segundoAP:String, var 
     "\nEdad: "+edad+
     "\nfechas: "+fecha+
     "\nHoras de registro: "+horaDeRegistro+
-    "\nNivel de bienestar: "+nivelBienestar.foreach(println)+
+    "\nNivel de bienestar: "+nivelBienestar+
     "\nTemperaturas: "+temperaturas.foreach(println)+
     "\nHumedad: "+humedad.foreach(println)
 
@@ -63,10 +63,18 @@ object PruebaClasesYObjetos {
     nivelBienestar
   }
 
+  def llenartemperaturas(n:Int) ={
+    var temperaturas=new Array[Double](n)
+    for(i <- 0 until temperaturas.length){
+      temperaturas(i)=numeroRandom(-20,50)
+    }
+    temperaturas
+  }
+
 
   def main(args: Array[String]): Unit = {
 
-    var paciente1=new Paciente("1","1","1",1,llenarFechas(4),llenarHoraRegistro(4),llenarNivelBienestar())
+    var paciente1=new Paciente("1","1","1",1,llenarFechas(4),llenarHoraRegistro(4),llenarNivelBienestar(4),llenartemperaturas(4))
     println(paciente1)
     llenarFechas(4).foreach(println)
 
