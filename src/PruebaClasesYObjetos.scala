@@ -1,7 +1,7 @@
 
-class Paciente(val nombre:String, val primerAp:String,val segundoAP:String, var edad:Byte,
-               val fecha:Array[String], horaDeRegistro:Array[String],nivelBienestar:Array[Byte],
-               temperaturas:Array[Double],humedad:Array[Double]){
+class Paciente(nombre:String, primerAp:String,segundoAP:String, edad:Byte,
+               val fecha:Array[String], val horaDeRegistro:Array[String],val nivelBienestar:Array[Byte],
+               val temperaturas:Array[Double],val humedad:Array[Double]){
 
 
   def imprimir(): Unit ={
@@ -32,6 +32,16 @@ class Paciente(val nombre:String, val primerAp:String,val segundoAP:String, var 
   }
 
   //obtener temperatura mayor (junto con nivel de bienestar, fecha, etc.)
+  def obtenerMayor(): Int ={
+    var mayor=0
+    for(i <- 0 until temperaturas.length){
+      if(temperaturas(i)>mayor){
+        mayor=i
+      }
+    }
+    mayor
+  }
+
   //obtener temperatura menor (junto con nivel de bienestar, fecha, etc.)
 
 
