@@ -11,18 +11,23 @@ class Paciente(val nombre:String, val primerAp:String,val segundoAP:String, var 
                temperaturas:Array[Double],humedad:Array[Double]){
 
 
-  override def toString: String = "-------- Paciente -------"+
-    "\nNombre: "+nombre+
-    "\nPrimer Apellido: "+primerAp+
-    "\nSegundo Apellido: "+segundoAP+
-    "\nEdad: "+edad+
-    "\nfechas: "+fecha+
-    "\nHoras de registro: "+horaDeRegistro+
-    "\nNivel de bienestar: "+nivelBienestar+
-    "\nTemperaturas: "+temperaturas+
-    "\nHumedad: "+humedad
-
-
+  def imprimir(): Unit ={
+    println("------- Paciente -------")
+    println("Nombre: "+nombre)
+    println("Primer Apellido: "+primerAp)
+    println("Segundo Apellido: "+segundoAP)
+    println("Edad: "+edad)
+    println("Fechas: ")
+    fecha.foreach(println)
+    println("Hora de registro: ")
+    horaDeRegistro.foreach(println)
+    println("Nivel de bienestar: ")
+    nivelBienestar.foreach(println)
+    println("Temperaturas: ")
+    temperaturas.foreach(println)
+    println("Humedad: ")
+    humedad.foreach(println)
+  }
 
 
 }
@@ -83,8 +88,7 @@ object PruebaClasesYObjetos {
   def main(args: Array[String]): Unit = {
 
     var paciente1=new Paciente("1","1","1",1,llenarFechas(4),llenarHoraRegistro(4),llenarNivelBienestar(4),llenartemperaturas(4),llenarHumedad(4))
-    println(paciente1)
-    llenarFechas(4).foreach(println)
+    paciente1.imprimir()
 
 
 
