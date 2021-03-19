@@ -1,3 +1,4 @@
+import java.util.GregorianCalendar
 /*
 
  obtener promedios nivel de bienestar
@@ -5,33 +6,61 @@ obtener temperatura mayor (junto con nivel de bienestar, fecha, etc.)
 obtener temperatura menor (junto con nivel de bienestar, fecha, etc.)*/
 
 
-class Paciente(val nombre:String, val primerAp:String,val segundoAP:String, var edad:Byte){
+class Paciente(val nombre:String, val primerAp:String,val segundoAP:String, var edad:Byte,
+               val fecha:Array[String], horaDeRegistro:Array[String],nivelBienestar:Array[Byte],
+               temperaturas:Array[Double],humedad:Array[Double]){
 
-  //atributos
-  var fecha=new Array[String](edad)
-  var horaDeRegistro=new Array[String](edad)
-  var nivelBienestar=new Array[Byte](edad)
-  var temperatura=new Array[Double](edad)
-  var humedad=new Array[Double](edad)
 
   override def toString: String = "-------- Paciente -------"+
     "\nNombre: "+nombre+
     "\nPrimer Apellido: "+primerAp+
     "\nSegundo Apellido: "+segundoAP+
     "\nEdad: "+edad+
-    "\nfechas: "+fecha.foreach(println)+
-    "\nHoras de registro: "+horaDeRegistro.foreach(println)+
+    "\nfechas: "+fecha+
+    "\nHoras de registro: "+horaDeRegistro+
     "\nNivel de bienestar: "+nivelBienestar.foreach(println)+
-    "\nTemperaturas: "+temperatura.foreach(println)+
+    "\nTemperaturas: "+temperaturas.foreach(println)+
     "\nHumedad: "+humedad.foreach(println)
+
+
+
 
 }
 
+
 object PruebaClasesYObjetos {
+
+  def numeroRandom(inicio: Int, fin: Int): Int = {
+    (inicio + Math.random * (fin - inicio)).toInt
+  }
+
+  private def llenarFechas(n:Int) ={
+    var fechas=new Array[String](n)
+    for(i <- 0 until fechas.length){
+      val dia=numeroRandom(1,31)
+      val mes=numeroRandom(1,12)
+      val año=numeroRandom(1900,2021)
+      fechas(i)=dia+"/"+mes+"/"+año
+    }
+    fechas
+  }
+
+  private def llenarHoraRegistro(n:Int) ={
+    var horaRegistro=new Array[String](n)
+    for(i <- 0 until horaRegistro.length){
+      val hora=numeroRandom(0,23)
+      val min=numeroRandom(0,59)
+      horaRegistro(i)=hora+":"+min
+    }
+    horaRegistro
+  }
+
+
   def main(args: Array[String]): Unit = {
 
-    var paciente1=new Paciente("1","1","1",1)
+    var paciente1=new Paciente("1","1","1",1,llenarFechas(4),llenarHoraRegistro(4))
     println(paciente1)
+    llenarFechas(4).foreach(println)
 
 
 
