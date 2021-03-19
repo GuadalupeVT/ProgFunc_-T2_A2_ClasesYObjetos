@@ -34,7 +34,7 @@ object PruebaClasesYObjetos {
     (inicio + Math.random * (fin - inicio)).toInt
   }
 
-  private def llenarFechas(n:Int) ={
+  def llenarFechas(n:Int) ={
     var fechas=new Array[String](n)
     for(i <- 0 until fechas.length){
       val dia=numeroRandom(1,31)
@@ -45,7 +45,7 @@ object PruebaClasesYObjetos {
     fechas
   }
 
-  private def llenarHoraRegistro(n:Int) ={
+  def llenarHoraRegistro(n:Int) ={
     var horaRegistro=new Array[String](n)
     for(i <- 0 until horaRegistro.length){
       val hora=numeroRandom(0,23)
@@ -55,10 +55,18 @@ object PruebaClasesYObjetos {
     horaRegistro
   }
 
+  def llenarNivelBienestar(n:Int) ={
+    var nivelBienestar=new Array[Byte](n)
+    for(i <- 0 until nivelBienestar.length){
+      nivelBienestar(i)=numeroRandom(1,5).toByte
+    }
+    nivelBienestar
+  }
+
 
   def main(args: Array[String]): Unit = {
 
-    var paciente1=new Paciente("1","1","1",1,llenarFechas(4),llenarHoraRegistro(4))
+    var paciente1=new Paciente("1","1","1",1,llenarFechas(4),llenarHoraRegistro(4),llenarNivelBienestar())
     println(paciente1)
     llenarFechas(4).foreach(println)
 
