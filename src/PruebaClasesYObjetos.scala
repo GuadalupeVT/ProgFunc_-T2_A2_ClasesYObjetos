@@ -1,10 +1,3 @@
-import java.util.GregorianCalendar
-/*
-
- obtener promedios nivel de bienestar
-obtener temperatura mayor (junto con nivel de bienestar, fecha, etc.)
-obtener temperatura menor (junto con nivel de bienestar, fecha, etc.)*/
-
 
 class Paciente(val nombre:String, val primerAp:String,val segundoAP:String, var edad:Byte,
                val fecha:Array[String], horaDeRegistro:Array[String],nivelBienestar:Array[Byte],
@@ -28,6 +21,18 @@ class Paciente(val nombre:String, val primerAp:String,val segundoAP:String, var 
     println("Humedad: ")
     humedad.foreach(println)
   }
+
+  //obtener promedios nivel de bienestar
+  def obtenerPromedioNivelBienestar(): Double ={
+    var sum=0
+    for(i <- 0 until nivelBienestar.length){
+      sum+=nivelBienestar(i)
+    }
+    sum/nivelBienestar.length
+  }
+
+  //obtener temperatura mayor (junto con nivel de bienestar, fecha, etc.)
+  //obtener temperatura menor (junto con nivel de bienestar, fecha, etc.)
 
 
 }
