@@ -43,7 +43,15 @@ class Paciente(nombre:String, primerAp:String,segundoAP:String, edad:Byte,
   }
 
   //obtener temperatura menor (junto con nivel de bienestar, fecha, etc.)
-
+  def obtenerMenor(): Int ={
+    var menor=0
+    for(i <- 0 until temperaturas.length){
+      if(temperaturas(i)<menor){
+        menor=i
+      }
+    }
+    menor
+  }
 
 }
 
